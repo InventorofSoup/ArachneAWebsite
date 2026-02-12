@@ -1,4 +1,12 @@
 title: Arachne
 description: "A Gaming Podcast"
 baseurl: "/ArachneAWebsite"
-theme: minima
+url: "https://inventorofsoup.github.io"
+
+# IMPORTANT: remove theme so we use our own layouts
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+markdown: kramdown
+permalink: /posts/:title/
