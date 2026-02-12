@@ -16,8 +16,7 @@ layout: default
   {% assign latest = site.posts | sort: "date" | reverse %}
   {% for post in latest limit:4 %}
     <div class="post-row">
-      <img class="thumb" src="{{ post.thumbnail | default: site.baseurl | append: '/assets/images/thumb-default.jpg' }}" alt="">
-      <div>
+           <div>
         <div class="tag">{{ post.content_type | default: "post" | upcase }}</div>
         <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
         <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 140 }}</p>
