@@ -172,11 +172,9 @@ body::after{
 }
 
 .post-row{
-  display:grid;
-  grid-template-columns: 120px 1fr;
-  gap:14px;
   padding:16px 0;
 }
+
 .thumb{
   width:120px;
   height:76px;
