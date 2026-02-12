@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: inventorofsoup/ArachneAWebsite
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/ArachneAWebsite/assets/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Content Type", name: "content_type", widget: "select", options: ["episode","youtube","event","article"] }
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
