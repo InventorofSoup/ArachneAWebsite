@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<header class="header">
+  <h1 class="logo">Arachne</h1>
+  <p class="tagline">A Gaming Podcast</p>
+</header>
+
+<section class="panel section">
+  <h2 class="feed-title">Latest</h2>
+
+  {% assign latest = site.posts | sort: "date" | reverse %}
+  {% for post in latest limit:4 %}
+    <div class="post-row">
+      <img class="thumb" src="{{ post.thumbnail | default: site.baseurl | append: '/assets/images/thumb-default.jpg' }}" alt="">
+      <div>
+        <div class="tag">{{ post.content_type | default: "post" | upcase }}</div>
+        <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+        <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 140 }}</p>
+        <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+      </div>
+    </div>
+    {% unless forloop.last %}<hr class="divider">{% endunless %}
+  {% endfor %}
+
+  <div class="actions">
+    <a class="btn" href="{{ site.baseurl }}/posts/">View All Posts →</a>
+  </div>
+</section>
+
+<section class="panel section newsletter">
+  <h2 class="feed-title">Stay Connected</h2>
+  <p class="small">Get new episodes, YouTube drops, and exclusive insights delivered directly.</p>
+
+  <!-- For now: use a Mailchimp/ConvertKit link later. This is a placeholder. -->
+  <form class="news-row" action="#" method="post" onsubmit="return false;">
+    <input class="input" type="email" placeholder="Email address" aria-label="Email address">
+    <button class="btn" type="submit">Subscribe</button>
+  </form>
+</section>
