@@ -2,4 +2,4 @@
 layout: home
 title: Home
 ---
-Welcome to **Arachne**.
+Welcome to **Arachne – A Gaming Podcast**
