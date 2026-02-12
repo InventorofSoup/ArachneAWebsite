@@ -19,7 +19,6 @@ permalink: /listen/
 
   {% for post in eps %}
     <div class="post-row">
-      <img class="thumb" src="{{ post.thumbnail | default: site.baseurl | append: '/assets/images/thumb-default.jpg' }}" alt="">
       <div>
         <div class="tag">EPISODE</div>
         <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
