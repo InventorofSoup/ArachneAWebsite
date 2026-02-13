@@ -1,7 +1,7 @@
 title: Arachne
-description: "A Gaming Podcast"
-baseurl: "/ArachneAWebsite"
+description: "A Gaming Podcast — episodes, events, videos, and community updates."
 url: "https://inventorofsoup.github.io"
+baseurl: "/ArachneAWebsite"
 
 # IMPORTANT: remove theme so we use our own layouts
 plugins:
