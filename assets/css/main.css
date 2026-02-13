@@ -22,36 +22,6 @@ body{
   background: var(--bg);
 }
 
-/* subtle synth/web background layer */
-body::before{
-  content:"";
-  position:fixed; inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(800px 500px at 15% 15%, rgba(31,107,255,0.10), transparent 60%),
-    radial-gradient(700px 500px at 85% 85%, rgba(255,212,71,0.08), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,0.02), transparent 35%);
-  opacity:1;
-  z-index:-2;
-}
-body::after{
-  content:"";
-  position:fixed; inset:0;
-  pointer-events:none;
-  /* “waves” as subtle lines */
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(31,107,255,0.05) 0px,
-      rgba(31,107,255,0.05) 1px,
-      transparent 10px,
-      transparent 22px
-    );
-  opacity:0.18;
-  filter: blur(0.2px);
-  z-index:-1;
-}
-
 /* layout */
 .shell{
   display:flex;
@@ -207,6 +177,7 @@ body::after{
   object-fit:cover;
   background: rgba(255,255,255,0.03);
 }
+
 .tag{
   display:inline-block;
   font-size:12px;
@@ -219,10 +190,11 @@ body::after{
   background: rgba(255,212,71,0.05);
   margin-bottom:6px;
 }
+
 .hline{
   margin:0;
   font-size:20px;
-  font-weight:900; /* your stylized headline feel comes from weight/spacing */
+  font-weight:900;
   line-height:1.3;
   letter-spacing:0.2px;
 }
@@ -231,20 +203,23 @@ body::after{
   text-decoration:none;
 }
 .hline a:hover{
-  color: var(--gold); /* hover-only gold links */
+  color: var(--gold);
 }
+
 .excerpt{
   margin:10px 0 0;
   color: var(--muted);
   line-height:1.65;
   font-size:15px;
 }
+
 .meta{
   margin-top:8px;
   color: rgba(169,179,214,0.85);
   font-size:12px;
   font-weight:700;
 }
+
 .divider{
   border:0;
   border-top:1px solid var(--divider);
@@ -256,6 +231,7 @@ body::after{
   justify-content:center;
   padding:14px 0 6px;
 }
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -283,6 +259,7 @@ body::after{
   margin-top:10px;
   flex-wrap:wrap;
 }
+
 .input{
   flex:1;
   min-width:220px;
@@ -292,6 +269,7 @@ body::after{
   background: rgba(0,0,0,0.18);
   color: var(--text);
 }
+
 .small{
   margin:0;
   color: var(--muted);
