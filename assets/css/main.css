@@ -164,6 +164,30 @@ body::after{
   padding:18px;
 }
 
+/* ===============================
+   YouTube Embed (Responsive)
+   =============================== */
+
+.yt-embed {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 ratio */
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.06);
+  margin-top: 14px;
+  max-width: 100%;
+}
+
+.yt-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 .feed-title{
   font-size:16px;
   margin:0 0 10px;
