@@ -25,24 +25,24 @@ layout: dafault
     {% endif %}
   {% endif %}
 
-  {% if page.content_type == "youtube" %}
-    {% if page.youtube_id %}
-      <div style="margin-top:14px; position:relative; padding-top:56.25%; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,0.06);">
-        <iframe
-          src="https://www.youtube.com/embed/{{ page.youtube_id }}"
-          title="YouTube video player"
-          style="position:absolute; inset:0; width:100%; height:100%; border:0;"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-      </div>
-    {% else %}
-      <p class="small" style="margin-top:14px;">
-        Add <code>youtube_id</code> to this post to embed the video.
-      </p>
-    {% endif %}
+ {% if page.content_type == "youtube" %}
+  {% if page.youtube_id %}
+    <div class="yt-embed">
+      <iframe
+        src="https://www.youtube.com/embed/{{ page.youtube_id }}?rel=0&amp;modestbranding=1"
+        title="YouTube video player"
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    </div>
+  {% else %}
+    <p class="small" style="margin-top:14px;">
+      Add <code>youtube_id</code> to this post to embed the video.
+    </p>
   {% endif %}
+{% endif %}
+
 
   {% if page.content_type == "event" %}
     <div style="margin-top:14px; padding:14px; border-radius:14px; border:1px solid rgba(255,255,255,0.06); background: rgba(0,0,0,0.12);">
