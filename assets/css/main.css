@@ -62,6 +62,19 @@ body{
 .brand-title{font-weight:900; letter-spacing:0.3px}
 .brand-sub{display:block; font-size:12px; color:var(--muted); margin-top:2px}
 
+/* micro-interactions */
+.nav a, .btn, .panel {
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.nav a:hover {
+  transform: translateY(-1px);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
 .nav{
   display:flex;
   flex-direction:column;
