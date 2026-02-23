@@ -301,6 +301,19 @@ body{
 /* responsive */
 @media (max-width: 980px){
   .sidebar{
+    padding:18px 14px;
+    border-radius:16px;
+  }
+  .nav a{
+    border-radius:16px;
+  }
+  .header{
+    padding-top:10px;
+  }
+  .logo{
+    font-size:44px;
+  }
+}
     position:static;
     width:auto;
     height:auto;
