@@ -6,14 +6,13 @@ permalink: /listen/
 
 <header class="header">
   <h1 class="logo" style="font-size:40px; color: var(--text);">Listen</h1>
-  <p class="tagline">Play the show on Spotify, then scroll for episode write-ups and direct links.</p>
+  <p class="tagline">Check out our latest episode or look for a specific episode below!</p>
 </header>
 
 <section class="panel section">
   <h2 class="feed-title">Latest Episode</h2>
 
 <p class="small" style="margin-top:6px;">
-  The player below defaults to our newest episode. Use Spotify’s controls to browse older episodes.
 </p>
 
   <div style="margin-top:14px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,0.06);">
@@ -26,8 +25,7 @@ permalink: /listen/
   </div>
 
   <p class="small" style="margin-top:12px;">
-    Spotify embeds don’t provide full “search the archive” inside the player. We can add site search next.
-  </p>
+    </p>
 </section>
 
 <section class="panel section" style="margin-top:16px;">
