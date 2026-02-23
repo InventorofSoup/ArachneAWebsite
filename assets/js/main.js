@@ -1,17 +1,14 @@
 (function () {
-  const path = (location.pathname || "").toLowerCase();
+  const base = "{{ site.baseurl }}";
+  const currentPath = window.location.pathname.replace(base, "");
 
-  const pick = () => {
-    if (path.endsWith("/listen/")) return "listen";
-    if (path.endsWith("/events/")) return "events";
-    if (path.endsWith("/gallery/")) return "gallery";
-    if (path.includes("/posts/")) return "posts";
-    if (path.endsWith("/contact/")) return "contact";
-    return "home";
-  };
+  const links = document.querySelectorAll(".nav a[data-path]");
 
-  const key = pick();
-  document.querySelectorAll(".nav a").forEach(a => {
-    if ((a.getAttribute("data-nav") || "") === key) a.classList.add("active");
+  links.forEach(link => {
+    const linkPath = link.getAttribute("data-path");
+
+    if (currentPath === linkPath || currentPath.startsWith(linkPath)) {
+      link.classList.add("active");
+    }
   });
 })();
