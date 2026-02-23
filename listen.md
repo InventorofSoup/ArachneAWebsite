@@ -10,7 +10,11 @@ permalink: /listen/
 </header>
 
 <section class="panel section">
-  <h2 class="feed-title">Spotify Player</h2>
+  <h2 class="feed-title">Latest Episode</h2>
+
+<p class="small" style="margin-top:6px;">
+  The player below defaults to our newest episode. Use Spotify’s controls to browse older episodes.
+</p>
 
   <div style="margin-top:14px; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,0.06);">
     <iframe
