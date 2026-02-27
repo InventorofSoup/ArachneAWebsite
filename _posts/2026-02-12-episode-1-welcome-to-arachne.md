@@ -7,6 +7,8 @@ excerpt: "What Arachne is, what we’re playing, and what you can expect from up
 tags: [rpg, tabletop, review]
 ---
 
-This is the first episode of Arachne.
+This is the first episode of Arachne. 
+
+spotify_url: "https://open.spotify.com/episode/..."
 
 Add show notes here. Talk about the games discussed, future plans, and what listeners can expect.
