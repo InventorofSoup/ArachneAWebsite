@@ -36,6 +36,13 @@ layout: default
     {% else %}
       <p class="small" style="margin-top:14px;">
         Add <code>player_embed</code> to embed the episode player.
+        {% if page.spotify_url %}
+  <div style="margin-top:14px;">
+    <a class="btn" href="{{ page.spotify_url }}" target="_blank" rel="noopener">
+      Listen on Spotify →
+    </a>
+  </div>
+{% endif %}
       </p>
     {% endif %}
   {% endif %}
