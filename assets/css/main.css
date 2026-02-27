@@ -324,3 +324,17 @@ body{
   .main{ margin-left:0; }
   .shell{ flex-direction:column; }
 }
+/* ===============================
+   Giscus (Comments) Styling
+   =============================== */
+
+.giscus, .giscus-frame{
+  width: 100%;
+}
+
+.giscus-frame{
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.12);
+}
