@@ -7,6 +7,21 @@ layout: default
   <h1 class="hline" style="font-size:28px;">{{ page.title }}</h1>
   <div class="meta">{{ page.date | date: "%b %d, %Y" }}</div>
 
+{% if page.tags %}
+  <div style="margin-top:10px;">
+    {% for tag in page.tags %}
+      <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" 
+         style="margin-right:6px; font-size:12px; text-decoration:none; 
+                padding:4px 8px; border-radius:999px;
+                border:1px solid rgba(255,212,71,0.25);
+                background:rgba(255,212,71,0.05);
+                color:rgba(255,212,71,0.95);">
+        #{{ tag }}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}
+  
   <!-- TYPE-AWARE BLOCKS -->
   {% if page.content_type == "episode" %}
     {% if page.player_embed %}
