@@ -14,6 +14,9 @@
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
 
+<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/og-image.png">
+<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/og-image.png">
+  
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
 <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
