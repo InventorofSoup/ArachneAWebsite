@@ -7,23 +7,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title | default: "Arachne" }}</title>
-<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
 
-<meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
-<meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
-<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-<meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
 
-<meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/og-image.png">
-<meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/og-image.png">
-  
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
-<meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
+  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/og-image.png">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/images/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}">
+  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | escape }}{% else %}{{ site.description | escape }}{% endif %}">
 
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/icons/Favicon.png">
-<link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/icons/Favicon.png">
+  <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/icons/Favicon.png">
 </head>
 <body>
   <div class="shell">
@@ -35,5 +35,31 @@
       </div>
     </main>
   </div>
+
+  <script>
+    (function () {
+      var path = window.location.pathname;
+
+      if (path.length > 1 && path.endsWith("/")) {
+        path = path.slice(0, -1);
+      }
+
+      document.querySelectorAll(".nav a[data-path]").forEach(function (link) {
+        var linkPath = link.getAttribute("data-path");
+
+        if (linkPath.length > 1 && linkPath.endsWith("/")) {
+          linkPath = linkPath.slice(0, -1);
+        }
+
+        if (path === "{{ site.baseurl }}" + linkPath || (linkPath === "" && path === "{{ site.baseurl }}")) {
+          link.classList.add("active");
+        }
+
+        if (linkPath === "/" && (path === "{{ site.baseurl }}" || path === "{{ site.baseurl }}/")) {
+          link.classList.add("active");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
