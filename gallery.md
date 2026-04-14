@@ -4,11 +4,17 @@ title: Gallery
 permalink: /gallery/
 ---
 
-<header class="header">
-  <h1 class="logo" style="font-size:40px; color: var(--text);">Gallery</h1>
-  <p class="tagline">Photos and event highlights.</p>
+<header class="header page-hero">
+  <p class="hero-kicker">Media archive</p>
+  <h1 class="page-title">Gallery</h1>
+  <p class="page-copy">
+    Visual highlights, event photos, and future media collections will live here once the archive is ready.
+  </p>
 </header>
 
 <section class="panel section">
-  <p class="small">We’ll add an image grid after the first uploads.</p>
+  <h2 class="feed-title">Coming Later</h2>
+  <p class="small">
+    The gallery is being held until there is enough material to make it worth browsing. Check back after future events and uploads.
+  </p>
 </section>
