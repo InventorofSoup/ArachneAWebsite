@@ -2,21 +2,104 @@
 layout: default
 ---
 
-<header class="header">
+<header class="header home-hero">
   <img src="{{ site.baseurl }}/assets/images/arachne-no-text.png"
        alt="Arachne"
-       style="max-width:320px;width:100%;height:auto;display:block;margin:0 auto;">
-  <p class="tagline">A Gaming Podcast</p>
+       class="hero-logo">
+
+  <p class="hero-kicker">Miniature gaming podcast and video channel</p>
+  <h1 class="hero-title">Arachne</h1>
+  <p class="hero-copy">
+    Episodes, battle reports, hobby discussion, event coverage, and tabletop content from the Arachne crew.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn" href="{{ site.baseurl }}/listen/">Start Listening</a>
+    <a class="btn btn-ghost" href="{{ site.baseurl }}/youtube/">Watch on YouTube</a>
+  </div>
 </header>
 
+{% assign episodes = site.posts | where: "content_type", "episode" | sort: "date" | reverse %}
+{% assign videos = site.posts | where: "content_type", "youtube" | sort: "date" | reverse %}
+{% assign latest = site.posts | sort: "date" | reverse %}
 
 <section class="panel section">
-  <h2 class="feed-title">Latest</h2>
+  <div class="section-head">
+    <h2 class="feed-title">Start Here</h2>
+  </div>
 
-  {% assign latest = site.posts | sort: "date" | reverse %}
+  <div class="feature-grid">
+    <a class="feature-card" href="{{ site.baseurl }}/listen/">
+      <div class="feature-icon">🎧</div>
+      <h3>Podcast Episodes</h3>
+      <p>Browse the latest episodes and listen through the archive.</p>
+    </a>
+
+    <a class="feature-card" href="{{ site.baseurl }}/youtube/">
+      <div class="feature-icon">▶️</div>
+      <h3>YouTube Videos</h3>
+      <p>Watch uploads, hobby content, and tabletop coverage.</p>
+    </a>
+
+    <a class="feature-card" href="{{ site.baseurl }}/tags/">
+      <div class="feature-icon">🏷️</div>
+      <h3>Browse by Tag</h3>
+      <p>Explore posts by topic, game, event, and category.</p>
+    </a>
+  </div>
+</section>
+
+<section class="panel section">
+  <div class="section-head">
+    <h2 class="feed-title">Latest Episode</h2>
+    <a class="section-link" href="{{ site.baseurl }}/listen/">All episodes →</a>
+  </div>
+
+  {% if episodes.size > 0 %}
+    {% assign post = episodes.first %}
+    <div class="post-row featured-row">
+      <div>
+        <div class="tag">{{ post.content_type | default: "episode" | upcase }}</div>
+        <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+        <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 220 }}</p>
+        <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+      </div>
+    </div>
+  {% else %}
+    <p class="small">No podcast episodes posted yet.</p>
+  {% endif %}
+</section>
+
+<section class="panel section">
+  <div class="section-head">
+    <h2 class="feed-title">Latest Video</h2>
+    <a class="section-link" href="{{ site.baseurl }}/youtube/">All videos →</a>
+  </div>
+
+  {% if videos.size > 0 %}
+    {% assign post = videos.first %}
+    <div class="post-row featured-row">
+      <div>
+        <div class="tag">{{ post.content_type | default: "youtube" | upcase }}</div>
+        <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+        <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 220 }}</p>
+        <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+      </div>
+    </div>
+  {% else %}
+    <p class="small">No YouTube posts posted yet.</p>
+  {% endif %}
+</section>
+
+<section class="panel section">
+  <div class="section-head">
+    <h2 class="feed-title">Recent Updates</h2>
+    <a class="section-link" href="{{ site.baseurl }}/posts/">View all posts →</a>
+  </div>
+
   {% for post in latest limit:4 %}
     <div class="post-row">
-           <div>
+      <div>
         <div class="tag">{{ post.content_type | default: "post" | upcase }}</div>
         <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
         <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 140 }}</p>
@@ -25,19 +108,16 @@ layout: default
     </div>
     {% unless forloop.last %}<hr class="divider">{% endunless %}
   {% endfor %}
-
-  <div class="actions">
-    <a class="btn" href="{{ site.baseurl }}/posts/">View All Posts →</a>
-  </div>
 </section>
 
 <section class="panel section newsletter">
   <h2 class="feed-title">Stay Connected</h2>
-  <p class="small">Get new episodes, YouTube drops, and exclusive insights delivered directly.</p>
+  <p class="small">
+    Follow new episodes, YouTube uploads, event updates, and site posts as the archive grows.
+  </p>
 
-  <!-- For now: use a Mailchimp/ConvertKit link later. This is a placeholder. -->
-  <form class="news-row" action="#" method="post" onsubmit="return false;">
-    <input class="input" type="email" placeholder="Email address" aria-label="Email address">
-    <button class="btn" type="submit">Subscribe</button>
-  </form>
+  <div class="hero-actions">
+    <a class="btn" href="{{ site.baseurl }}/listen/">Latest Episode</a>
+    <a class="btn btn-ghost" href="{{ site.baseurl }}/contact/">Follow Arachne</a>
+  </div>
 </section>
