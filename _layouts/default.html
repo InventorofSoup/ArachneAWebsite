@@ -38,24 +38,30 @@
 
   <script>
     (function () {
-      var path = window.location.pathname;
+      function normalizePath(path) {
+        if (!path) return "/";
 
-      if (path.length > 1 && path.endsWith("/")) {
-        path = path.slice(0, -1);
+        path = path.split("?")[0].split("#")[0];
+
+        if (path.indexOf("index.html") !== -1) {
+          path = path.replace(/index\.html$/, "");
+        }
+
+        if (path.length > 1 && path.endsWith("/")) {
+          path = path.slice(0, -1);
+        }
+
+        return path || "/";
       }
 
+      var base = "{{ site.baseurl }}" || "";
+      var currentPath = normalizePath(window.location.pathname);
+
       document.querySelectorAll(".nav a[data-path]").forEach(function (link) {
-        var linkPath = link.getAttribute("data-path");
+        var dataPath = link.getAttribute("data-path") || "/";
+        var fullPath = normalizePath(base + dataPath);
 
-        if (linkPath.length > 1 && linkPath.endsWith("/")) {
-          linkPath = linkPath.slice(0, -1);
-        }
-
-        if (path === "{{ site.baseurl }}" + linkPath || (linkPath === "" && path === "{{ site.baseurl }}")) {
-          link.classList.add("active");
-        }
-
-        if (linkPath === "/" && (path === "{{ site.baseurl }}" || path === "{{ site.baseurl }}/")) {
+        if (currentPath === fullPath) {
           link.classList.add("active");
         }
       });
