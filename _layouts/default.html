@@ -29,6 +29,17 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/icons/Favicon.png">
   <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/icons/Favicon.png">
+  <script>
+    (function () {
+      var authHash = window.location.hash || "";
+      var isIdentityLink = /^#(?:invite_token|recovery_token|confirmation_token|email_change_token)=/.test(authHash);
+      var adminPath = "{{ '/admin/' | relative_url }}";
+
+      if (isIdentityLink && window.location.pathname !== adminPath) {
+        window.location.replace(adminPath + authHash);
+      }
+    })();
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
