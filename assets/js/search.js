@@ -66,8 +66,8 @@
     const btns = filtersEl.querySelectorAll("button[data-filter]");
     btns.forEach(b => {
       const isOn = b.getAttribute("data-filter") === activeFilter;
-      b.style.borderColor = isOn ? "rgba(255,212,71,0.55)" : "rgba(255,212,71,0.25)";
-      b.style.boxShadow = isOn ? "0 0 0 1px rgba(255,212,71,0.10) inset" : "none";
+      b.classList.toggle("active", isOn);
+      b.setAttribute("aria-pressed", String(isOn));
     });
   }
 

@@ -2,122 +2,121 @@
 layout: default
 ---
 
-<header class="header home-hero">
-  <img src="{{ site.baseurl }}/assets/images/arachne-no-text.png"
-       alt="Arachne"
-       class="hero-logo">
-
-  <p class="hero-kicker">Miniature gaming podcast and video channel</p>
-  <h1 class="hero-title">Arachne</h1>
-  <p class="hero-copy">
-    Episodes, battle reports, hobby discussion, event coverage, and tabletop content from the Arachne crew.
-  </p>
-
-  <div class="hero-actions">
-    <a class="btn" href="{{ site.baseurl }}/listen/">Start Listening</a>
-    <a class="btn btn-ghost" href="{{ site.baseurl }}/youtube/">Watch on YouTube</a>
-  </div>
-</header>
-
 {% assign episodes = site.posts | where: "content_type", "episode" | sort: "date" | reverse %}
 {% assign videos = site.posts | where: "content_type", "youtube" | sort: "date" | reverse %}
 {% assign latest = site.posts | sort: "date" | reverse %}
+{% assign featured = episodes.first %}
 
-<section class="panel section">
-  <div class="section-head">
-    <h2 class="feed-title">Start Here</h2>
-  </div>
+<section class="broadcast-hero">
+  <div class="broadcast-copy">
+    <p class="signal-kicker"><span aria-hidden="true"></span> Latest from Arachne</p>
+    {% if featured %}
+      <div class="signal-code">{{ featured.series | default: "Arachne Podcast" }} · {{ featured.date | date: "%b %d, %Y" }}</div>
+      <h1>{{ featured.title }}</h1>
+      <p class="hero-copy">{{ featured.excerpt | default: featured.content | strip_html | truncate: 230 }}</p>
 
-  <div class="feature-grid">
-    <a class="feature-card" href="{{ site.baseurl }}/listen/">
-      <div class="feature-icon">🎧</div>
-      <h3>Podcast Episodes</h3>
-      <p>Browse the latest episodes and listen through the archive.</p>
-    </a>
-
-    <a class="feature-card" href="{{ site.baseurl }}/youtube/">
-      <div class="feature-icon">▶️</div>
-      <h3>YouTube Videos</h3>
-      <p>Watch uploads, hobby content, and tabletop coverage.</p>
-    </a>
-
-    <a class="feature-card" href="{{ site.baseurl }}/tags/">
-      <div class="feature-icon">🏷️</div>
-      <h3>Browse by Tag</h3>
-      <p>Explore posts by topic, game, event, and category.</p>
-    </a>
-  </div>
-</section>
-
-<section class="panel section">
-  <div class="section-head">
-    <h2 class="feed-title">Latest Episode</h2>
-    <a class="section-link" href="{{ site.baseurl }}/listen/">All episodes →</a>
-  </div>
-
-  {% if episodes.size > 0 %}
-    {% assign post = episodes.first %}
-    <div class="post-row featured-row">
-      <div>
-        <div class="tag">{{ post.series | default: post.content_type | default: "episode" | upcase }}</div>
-        <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-        <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 220 }}</p>
-        <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
+      <div class="hero-actions">
+        {% if featured.audio_url %}
+          <a class="btn btn-primary" href="{{ featured.audio_url }}">▶ Listen now</a>
+        {% else %}
+          <a class="btn btn-primary" href="{{ site.baseurl }}{{ featured.url }}">Open episode</a>
+        {% endif %}
+        <a class="btn btn-ghost" href="{{ site.baseurl }}{{ featured.url }}">View episode notes</a>
       </div>
-    </div>
-  {% else %}
-    <p class="small">No podcast episodes posted yet.</p>
-  {% endif %}
-</section>
 
-<section class="panel section">
-  <div class="section-head">
-    <h2 class="feed-title">Latest Video</h2>
-    <a class="section-link" href="{{ site.baseurl }}/youtube/">All videos →</a>
+      <div class="transmission-meta">
+        <span>{{ featured.series | default: "Podcast" }}</span>
+        {% if featured.duration %}<span>{{ featured.duration }}</span>{% endif %}
+        <span>Podcast</span>
+      </div>
+    {% else %}
+      <h1>Tabletop stories on every frequency.</h1>
+      <p class="hero-copy">Podcasts, battle reports, hobby discussion, event coverage, and miniature gaming dispatches from the Arachne crew.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{{ site.baseurl }}/listen/">Start listening</a>
+        <a class="btn btn-ghost" href="{{ site.baseurl }}/youtube/">Watch on YouTube</a>
+      </div>
+    {% endif %}
   </div>
 
-  {% if videos.size > 0 %}
-    {% assign post = videos.first %}
-    <div class="post-row featured-row">
-      <div>
-        <div class="tag">{{ post.content_type | default: "youtube" | upcase }}</div>
-        <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-        <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 220 }}</p>
-        <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
-      </div>
-    </div>
-  {% else %}
-    <p class="small">No YouTube posts posted yet.</p>
-  {% endif %}
+  <div class="broadcast-art brand-broadcast-art">
+    <img src="{{ site.baseurl }}/assets/images/arachne-no-text.png" alt="Arachne spider logo">
+    <span class="scanlines" aria-hidden="true"></span>
+  </div>
 </section>
 
-<section class="panel section">
+<section class="broadcast-section">
   <div class="section-head">
-    <h2 class="feed-title">Recent Updates</h2>
-    <a class="section-link" href="{{ site.baseurl }}/posts/">View all posts →</a>
+    <div>
+      <p class="signal-label">Find your next favorite</p>
+      <h2 class="section-title">Listen, watch, and explore</h2>
+    </div>
+    <a class="section-link" href="{{ site.baseurl }}/posts/">Browse everything →</a>
   </div>
 
-  {% for post in latest limit:4 %}
-    <div class="post-row">
-      <div>
-        <div class="tag">{{ post.content_type | default: "post" | upcase }}</div>
-        <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-        <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 140 }}</p>
-        <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
-      </div>
-    </div>
-    {% unless forloop.last %}<hr class="divider">{% endunless %}
-  {% endfor %}
+  <div class="channel-grid">
+    <a class="channel-card channel-podcast" href="{{ site.baseurl }}/listen/">
+      <div class="channel-status"><span>PODCAST</span><span>LISTEN</span></div>
+      <h3>Arachne Podcast</h3>
+      <p>Interviews, Infinity, event coverage, lore, and tabletop conversations.</p>
+      <strong>Explore {{ episodes.size }} episodes →</strong>
+    </a>
+    <a class="channel-card channel-video" href="{{ site.baseurl }}/youtube/">
+      <div class="channel-status"><span>YOUTUBE</span><span>WATCH</span></div>
+      <h3>Battle Reports</h3>
+      <p>Blood &amp; Plunder, Bushido, Cyberpunk, and campaign footage.</p>
+      <strong>Watch {{ videos.size }} videos →</strong>
+    </a>
+    <a class="channel-card channel-archive" href="{{ site.baseurl }}/posts/">
+      <div class="channel-status"><span>ALL CONTENT</span><span>EXPLORE</span></div>
+      <h3>Full Archive</h3>
+      <p>Every episode, video, event, and community update in one searchable feed.</p>
+      <strong>Browse the archive →</strong>
+    </a>
+  </div>
 </section>
 
-<section class="panel section newsletter">
-  <h2 class="feed-title">Stay Connected</h2>
-  <p class="small">
-    Follow new episodes, YouTube uploads, event updates, and site posts as the archive grows.
-  </p>
+<section class="broadcast-section">
+  <div class="section-head">
+    <div>
+      <p class="signal-label">From the crew</p>
+      <h2 class="section-title">Latest releases</h2>
+    </div>
+  </div>
 
+  <div class="media-grid">
+    {% for post in latest limit:6 %}
+      {% assign card_image = post.thumbnail | default: post.episode_artwork | default: post.video_thumbnail %}
+      <article class="media-card" data-type="{{ post.content_type | default: 'article' }}">
+        <a class="media-card-image" href="{{ site.baseurl }}{{ post.url }}">
+          {% if card_image %}
+            <img src="{{ card_image }}" alt="" loading="lazy">
+          {% else %}
+            <img src="{{ site.baseurl }}/assets/images/arachne-no-text.png" alt="" loading="lazy">
+          {% endif %}
+          <span class="media-card-action">{% if post.content_type == "youtube" %}WATCH{% elsif post.content_type == "episode" %}LISTEN{% else %}OPEN{% endif %}</span>
+        </a>
+        <div class="media-card-body">
+          <div class="media-card-meta">
+            <span>{{ post.series | default: post.content_type | default: "post" }}</span>
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+          </div>
+          <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt | default: post.content | strip_html | truncate: 135 }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="signal-cta">
+  <div>
+    <p class="signal-label">Stay connected</p>
+    <h2>Follow what we’re making.</h2>
+    <p>Follow the podcast, watch the latest games, or get in touch with the crew.</p>
+  </div>
   <div class="hero-actions">
-    <a class="btn" href="{{ site.baseurl }}/listen/">Latest Episode</a>
-    <a class="btn btn-ghost" href="{{ site.baseurl }}/contact/">Follow Arachne</a>
+    <a class="btn btn-primary" href="{{ site.baseurl }}/listen/">Latest episode</a>
+    <a class="btn btn-ghost" href="{{ site.baseurl }}/contact/">Contact Arachne</a>
   </div>
 </section>

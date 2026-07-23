@@ -1,39 +1,27 @@
-<aside class="sidebar">
-<nav class="nav" aria-label="Primary navigation">
-  <a href="{{ site.baseurl }}/" data-path="/">
-    <span class="ico">🏠</span> Home
+<header class="site-header">
+  <a class="site-brand" href="{{ site.baseurl }}/" aria-label="Arachne home">
+    <span class="site-brand-sigil" aria-hidden="true">A</span>
+    <span>
+      <strong>ARACHNE</strong>
+      <small>Broadcast Network</small>
+    </span>
   </a>
 
-  <a href="{{ site.baseurl }}/listen/" data-path="/listen/">
-    <span class="ico">🎧</span> Listen
-  </a>
+  <nav class="nav" aria-label="Primary navigation">
+    <a href="{{ site.baseurl }}/listen/" data-path="/listen/">Listen</a>
+    <a href="{{ site.baseurl }}/youtube/" data-path="/youtube/">Watch</a>
+    <a href="{{ site.baseurl }}/posts/" data-path="/posts/">Archive</a>
+    <a href="{{ site.baseurl }}/events/" data-path="/events/">Events</a>
 
-  <a href="{{ site.baseurl }}/youtube/" data-path="/youtube/">
-    <span class="ico">▶️</span> YouTube
-  </a>
-
-  <a href="{{ site.baseurl }}/events/" data-path="/events/">
-    <span class="ico">📅</span> Events
-  </a>
-
-  <a href="{{ site.baseurl }}/posts/" data-path="/posts/">
-    <span class="ico">✍️</span> Recent Posts
-  </a>
-
-  <a href="{{ site.baseurl }}/tags/" data-path="/tags/">
-    <span class="ico">🏷</span> Tags
-  </a>
-
-  <a href="{{ site.baseurl }}/search/" data-path="/search/">
-    <span class="ico">🔎</span> Search
-  </a>
-  
-  <a href="{{ site.baseurl }}/merch/" data-path="/merch/">
-    <span class="ico">🛍</span> Merch
-  </a>
-
-  <a href="{{ site.baseurl }}/contact/" data-path="/contact/">
-    <span class="ico">✉️</span> Contact
-  </a>
-</nav>
-</aside>
+    <details class="more-menu">
+      <summary>More</summary>
+      <div class="more-menu-panel">
+        <a href="{{ site.baseurl }}/search/" data-path="/search/">Search</a>
+        <a href="{{ site.baseurl }}/tags/" data-path="/tags/">Topics</a>
+        <a href="{{ site.baseurl }}/merch/" data-path="/merch/">Merch</a>
+        <a href="{{ site.baseurl }}/contact/" data-path="/contact/">Contact</a>
+        <a href="{{ site.baseurl }}/admin/" rel="nofollow">Editor login</a>
+      </div>
+    </details>
+  </nav>
+</header>

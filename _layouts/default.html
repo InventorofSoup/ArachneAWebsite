@@ -23,19 +23,27 @@
 
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="alternate" type="application/atom+xml" title="{{ site.title }} Feed" href="{{ '/feed.xml' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oxanium:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/icons/Favicon.png">
   <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/icons/Favicon.png">
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="signal-bar" aria-hidden="true"></div>
   <div class="shell">
     {% include sidebar.html %}
 
-    <main class="main">
-      <div class="container">
-        {{ content }}
-      </div>
+    <main class="main container" id="main-content">
+      {{ content }}
     </main>
+
+    <footer class="site-footer">
+      <span>ARACHNE · EST. 2023</span>
+      <span>GAMES · STORIES · COMMUNITY</span>
+    </footer>
   </div>
 
   <script>
@@ -65,7 +73,14 @@
 
         if (currentPath === fullPath) {
           link.classList.add("active");
+          link.setAttribute("aria-current", "page");
         }
+      });
+
+      document.addEventListener("click", function (event) {
+        document.querySelectorAll(".more-menu[open]").forEach(function (menu) {
+          if (!menu.contains(event.target)) menu.removeAttribute("open");
+        });
       });
     })();
   </script>

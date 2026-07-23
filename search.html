@@ -4,27 +4,27 @@ title: Search
 permalink: /search/
 ---
 
-<header class="header">
-  <h1 class="logo" style="font-size:40px; color: var(--text);">Search</h1>
-  <p class="tagline">Find episodes, events, videos, and updates.</p>
+<header class="page-hero">
+  <p class="signal-kicker"><span aria-hidden="true"></span> Find something you’ll enjoy</p>
+  <h1 class="page-title">Search</h1>
+  <p class="page-copy">Find episodes, events, videos, and updates.</p>
 </header>
 
-<section class="panel section">
-  <h2 class="feed-title">Search</h2>
+<section class="panel section search-panel">
+  <h2 class="section-title">Search the archive</h2>
+  <label class="sr-only" for="searchBox">Search titles and notes</label>
+  <input id="searchBox" class="input" type="search" placeholder="Search titles and notes…" autocomplete="off">
 
-  <input id="searchBox" class="input" type="search" placeholder="Search posts (title + text)…" autocomplete="off" />
+  <div id="filters" class="archive-filters" aria-label="Filter search results">
+    <button class="filter-btn" data-filter="all" type="button">All</button>
+    <button class="filter-btn" data-filter="episode" type="button">Episodes</button>
+    <button class="filter-btn" data-filter="event" type="button">Events</button>
+    <button class="filter-btn" data-filter="youtube" type="button">YouTube</button>
+    <button class="filter-btn" data-filter="post" type="button">Posts</button>
+  </div>
 
-<div id="filters" style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
-  <button class="btn" data-filter="all" type="button">All</button>
-  <button class="btn" data-filter="episode" type="button">Episodes</button>
-  <button class="btn" data-filter="event" type="button">Events</button>
-  <button class="btn" data-filter="youtube" type="button">YouTube</button>
-  <button class="btn" data-filter="post" type="button">Posts</button>
-</div>
-  
-  <div id="searchMeta" class="meta" style="margin-top:10px;"></div>
-
-  <div id="results" style="margin-top:14px;"></div>
+  <div id="searchMeta" class="meta"></div>
+  <div id="results"></div>
 </section>
 
 <script>
@@ -32,7 +32,7 @@ permalink: /search/
     {% for post in site.posts %}
       {
         "title": {{ post.title | jsonify }},
-        "url": {{ (site.baseurl | append: post.url) | jsonify }},
+        "url": {{ post.url | prepend: site.baseurl | jsonify }},
         "date": {{ post.date | date: "%b %d, %Y" | jsonify }},
         "type": {{ post.content_type | default: "post" | jsonify }},
         "excerpt": {{ post.excerpt | default: post.content | strip_html | strip_newlines | truncate: 220 | jsonify }},

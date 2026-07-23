@@ -2,139 +2,123 @@
 layout: default
 ---
 
-<section class="panel section">
-  {% assign post_label = page.series | default: page.content_type | default: "post" %}
-  <div class="tag">{{ post_label | upcase }}</div>
-  <h1 class="hline" style="font-size:28px;">{{ page.title }}</h1>
-  <div class="meta">{{ page.date | date: "%b %d, %Y" }}</div>
+{% assign post_label = page.series | default: page.content_type | default: "post" %}
+{% assign post_image = page.thumbnail | default: page.episode_artwork | default: page.video_thumbnail | default: "/assets/images/arachne-no-text.png" %}
 
-  {% if page.tags %}
-    <div style="margin-top:10px;">
-      {% for tag in page.tags %}
-        <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}"
-           style="margin-right:6px; font-size:12px; text-decoration:none;
-                  padding:4px 8px; border-radius:999px;
-                  border:1px solid rgba(255,212,71,0.25);
-                  background:rgba(255,212,71,0.05);
-                  color:rgba(255,212,71,0.95);">
-          #{{ tag }}
-        </a>
-      {% endfor %}
-    </div>
-  {% endif %}
+<article class="post-page">
+  <header class="post-broadcast">
+    <div class="post-broadcast-copy">
+      <p class="signal-kicker"><span aria-hidden="true"></span> {{ post_label }}</p>
+      <h1>{{ page.title }}</h1>
+      {% if page.excerpt %}<p class="post-deck">{{ page.excerpt }}</p>{% endif %}
 
-  {% assign post_image = page.thumbnail | default: page.episode_artwork | default: page.video_thumbnail %}
-  {% if post_image %}
-    <img class="post-hero-image"
-         src="{{ post_image }}"
-         alt="{{ page.title | escape }}"
-         loading="eager">
-  {% endif %}
+      <div class="transmission-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %d, %Y" }}</time>
+        {% if page.duration %}<span>{{ page.duration }}</span>{% endif %}
+        <span>{{ page.content_type | default: "post" }}</span>
+      </div>
 
-  <!-- EPISODE BLOCK -->
-  {% if page.content_type == "episode" %}
+      {% if page.tags %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}">#{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
 
-    {% if page.audio_url %}
-      <div class="episode-player">
-        <audio controls preload="metadata">
+      {% if page.content_type == "episode" and page.audio_url %}
+        <audio class="broadcast-player" controls preload="metadata">
           <source src="{{ page.audio_url }}" type="audio/mpeg">
           Your browser does not support the audio player.
         </audio>
-        {% if page.duration %}
-          <div class="meta">Duration: {{ page.duration }}</div>
+      {% endif %}
+
+      <div class="hero-actions post-actions">
+        {% if page.spotify_url %}
+          <a class="btn btn-primary" href="{{ page.spotify_url }}" target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+        {% endif %}
+        {% if page.episode_url %}
+          <a class="btn btn-ghost" href="{{ page.episode_url }}" target="_blank" rel="noopener noreferrer">Episode source ↗</a>
+        {% endif %}
+        {% if page.video_url %}
+          <a class="btn btn-primary" href="{{ page.video_url }}" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+        {% endif %}
+        {% if page.signup_url %}
+          <a class="btn btn-primary" href="{{ page.signup_url }}" target="_blank" rel="noopener noreferrer">Sign up ↗</a>
         {% endif %}
       </div>
-    {% endif %}
+    </div>
 
-    {% if page.player_embed %}
-      <div style="margin-top:14px;">
-        <iframe
-          style="width:100%; height:152px; border:0; border-radius:14px;"
-          src="{{ page.player_embed }}"
-          loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-        </iframe>
-      </div>
-    {% endif %}
+    <div class="post-broadcast-art">
+      <img src="{{ post_image }}" alt="{{ page.title | escape }}">
+      <span class="scanlines" aria-hidden="true"></span>
+    </div>
+  </header>
 
-    {% if page.spotify_url %}
-      <div style="margin-top:14px;">
-        <a class="btn" href="{{ page.spotify_url }}" target="_blank" rel="noopener">
-          Listen on Spotify →
-        </a>
-      </div>
-    {% endif %}
-
-    {% if page.episode_url %}
-      <div style="margin-top:14px;">
-        <a class="btn btn-ghost" href="{{ page.episode_url }}" target="_blank" rel="noopener noreferrer">
-          Episode details ↗
-        </a>
-      </div>
-    {% endif %}
-
-  {% endif %}
-
-  <!-- YOUTUBE BLOCK -->
-  {% if page.content_type == "youtube" %}
-    {% if page.youtube_id %}
+  {% if page.content_type == "youtube" and page.youtube_id %}
+    <section class="post-video-player" aria-label="Video player">
       <div class="yt-embed">
         <iframe
           src="https://www.youtube.com/embed/{{ page.youtube_id }}?rel=0&amp;modestbranding=1"
-          title="YouTube video player"
+          title="{{ page.title | escape }}"
           loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowfullscreen>
         </iframe>
       </div>
-    {% endif %}
-    {% if page.video_url %}
-      <div style="margin-top:14px;">
-        <a class="btn btn-ghost" href="{{ page.video_url }}" target="_blank" rel="noopener noreferrer">
-          Watch on YouTube ↗
-        </a>
-      </div>
-    {% endif %}
+    </section>
   {% endif %}
 
-  <!-- EVENT BLOCK -->
+  {% if page.player_embed %}
+    <section class="embedded-player" aria-label="Embedded audio player">
+      <iframe
+        src="{{ page.player_embed }}"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </section>
+  {% endif %}
+
   {% if page.content_type == "event" %}
-    <div style="margin-top:14px; padding:14px; border-radius:14px;
-                border:1px solid rgba(255,255,255,0.06);
-                background: rgba(0,0,0,0.12);">
-
-      {% if page.event_date %}
-        <div class="meta"><strong>Date:</strong>
-          {{ page.event_date | date: "%b %d, %Y" }}
-        </div>
-      {% endif %}
-
-      {% if page.location %}
-        <div class="meta" style="margin-top:6px;">
-          <strong>Location:</strong> {{ page.location }}
-        </div>
-      {% endif %}
-
-      {% if page.signup_url %}
-        <div style="margin-top:10px;">
-          <a class="btn" href="{{ page.signup_url }}" target="_blank" rel="noopener">
-            Sign Up →
-          </a>
-        </div>
-      {% endif %}
-
-    </div>
+    <section class="event-signal">
+      <p class="signal-label">Event details</p>
+      {% if page.event_date %}<p><strong>Date</strong> {{ page.event_date | date: "%b %d, %Y" }}</p>{% endif %}
+      {% if page.location %}<p><strong>Location</strong> {{ page.location }}</p>{% endif %}
+    </section>
   {% endif %}
 
-  <!-- POST BODY -->
-  <div style="margin-top:14px; line-height:1.8; color: var(--text);">
+  <section class="post-content">
+    <p class="signal-label">Show notes</p>
     {{ content }}
-  </div>
+  </section>
+</article>
 
+{% assign related = site.posts | where: "content_type", page.content_type | sort: "date" | reverse %}
+<section class="broadcast-section related-section">
+  <div class="section-head">
+    <div>
+      <p class="signal-label">Keep exploring</p>
+      <h2 class="section-title">You may also like</h2>
+    </div>
+  </div>
+  <div class="related-grid">
+    {% assign related_count = 0 %}
+    {% for post in related %}
+      {% if post.url != page.url and related_count < 3 %}
+        {% assign related_count = related_count | plus: 1 %}
+        <a class="related-card" href="{{ site.baseurl }}{{ post.url }}">
+          <span>{{ post.series | default: post.content_type | default: "post" }}</span>
+          <strong>{{ post.title }}</strong>
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
 </section>
 
-<section class="panel section" style="margin-top:24px;">
-  <h2 class="feed-title" style="margin-bottom:12px;">Comments</h2>
-  <p class="meta comments-note">Comments are reviewed before they appear publicly.</p>
+<section class="comments-section">
+  <p class="signal-label">Join the conversation</p>
+  <h2 class="section-title">Community comments</h2>
+  <p class="comments-note">Comments are reviewed before they appear publicly.</p>
   {% include cusdis.html %}
 </section>
