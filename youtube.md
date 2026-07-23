@@ -17,7 +17,7 @@ permalink: /youtube/
 <section class="panel section">
   <div class="section-head">
     <h2 class="feed-title">Latest Video</h2>
-    <a class="section-link" href="https://www.youtube.com/@ArachneAnGamingYoutubeChanne" target="_blank" rel="noopener noreferrer">Open channel ↗</a>
+    <a class="section-link" href="https://www.youtube.com/@ArachneAGamingYoutubeChannel" target="_blank" rel="noopener noreferrer">Open channel ↗</a>
   </div>
 
   {% if vids.size > 0 %}

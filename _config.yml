@@ -1,12 +1,19 @@
 title: Arachne
 description: "A Gaming Podcast — episodes, events, videos, and community updates."
-url: "https://inventorofsoup.github.io"
-baseurl: "/ArachneAWebsite"
+url: "https://arachneawebsite.netlify.app"
+baseurl: ""
 
 # IMPORTANT: remove theme so we use our own layouts
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
   - jekyll-seo-tag
 
 markdown: kramdown
 permalink: /posts/:title/
+
+# Authoring examples are source-only and should never become public pages.
+exclude:
+  - README.md
+  - templates
+  - vendor

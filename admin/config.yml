@@ -1,21 +1,104 @@
 backend:
-  name: github
-  repo: inventorofsoup/ArachneAWebsite
+  name: git-gateway
   branch: main
 
+site_url: "https://arachneawebsite.netlify.app/"
+display_url: "https://arachneawebsite.netlify.app/"
+logo_url: "https://arachneawebsite.netlify.app/assets/icons/Favicon.png"
+
 media_folder: "assets/uploads"
-public_folder: "/ArachneAWebsite/assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
-  - name: "posts"
-    label: "Posts"
+  - name: "episodes"
+    label: "Podcast Episodes"
+    label_singular: "Podcast Episode"
+    description: "Episode notes and Spotify players shown on the Listen page."
     folder: "_posts"
     create: true
+    filter: { field: "content_type", value: "episode" }
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
     fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Content Type", name: "content_type", widget: "hidden", default: "episode" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Content Type", name: "content_type", widget: "select", options: ["episode","youtube","event","article"] }
-      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
-      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn this off to keep an unfinished episode hidden." }
+      - { label: "Short Description", name: "excerpt", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Add topics such as Infinity, painting, or interviews." }
+      - { label: "Spotify Episode Link", name: "spotify_url", widget: "string", required: false }
+      - { label: "Spotify Embed Link", name: "player_embed", widget: "string", required: false, hint: "Optional. Use Spotify's embed URL if you want a player inside the post." }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Direct Audio Link", name: "audio_url", widget: "string", required: false }
+      - { label: "Episode Details Link", name: "episode_url", widget: "string", required: false }
+      - { label: "Artwork Link", name: "episode_artwork", widget: "string", required: false }
+      - { label: "Duration", name: "duration", widget: "string", required: false }
+      - { label: "Episode Notes", name: "body", widget: "markdown" }
+
+  - name: "videos"
+    label: "YouTube Videos"
+    label_singular: "YouTube Video"
+    description: "Video posts shown on the YouTube page."
+    folder: "_posts"
+    create: true
+    filter: { field: "content_type", value: "youtube" }
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Content Type", name: "content_type", widget: "hidden", default: "youtube" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn this off to keep an unfinished video post hidden." }
+      - { label: "Short Description", name: "excerpt", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "YouTube Video ID", name: "youtube_id", widget: "string", required: false, hint: "Paste only the ID after v= in the YouTube URL." }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "YouTube Video Link", name: "video_url", widget: "string", required: false }
+      - { label: "YouTube Thumbnail Link", name: "video_thumbnail", widget: "string", required: false }
+      - { label: "Duration", name: "duration", widget: "string", required: false }
+      - { label: "Video Notes", name: "body", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    label_singular: "Event"
+    description: "Upcoming and past events shown on the Events page."
+    folder: "_posts"
+    create: true
+    filter: { field: "content_type", value: "event" }
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{event_date}} — {{title}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Content Type", name: "content_type", widget: "hidden", default: "event" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Post Date", name: "date", widget: "datetime" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn this off while event details are unfinished." }
+      - { label: "Event Date", name: "event_date", widget: "datetime" }
+      - { label: "Location", name: "location", widget: "string", required: false }
+      - { label: "Signup Link", name: "signup_url", widget: "string", required: false }
+      - { label: "Short Description", name: "excerpt", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Event Details", name: "body", widget: "markdown" }
+
+  - name: "articles"
+    label: "News and Posts"
+    label_singular: "Post"
+    description: "General updates shown in the Recent Posts archive."
+    folder: "_posts"
+    create: true
+    filter: { field: "content_type", value: "article" }
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Content Type", name: "content_type", widget: "hidden", default: "article" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn this off to keep an unfinished post hidden." }
+      - { label: "Short Description", name: "excerpt", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", required: false }
+      - { label: "Post", name: "body", widget: "markdown" }

@@ -48,7 +48,7 @@ permalink: /listen/
 
   {% for post in eps %}
     <article class="post-row">
-      <div class="tag">EPISODE</div>
+      <div class="tag">{{ post.series | default: "EPISODE" | upcase }}</div>
       <h3 class="hline"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
       <p class="excerpt">{{ post.excerpt | default: post.content | strip_html | truncate: 190 }}</p>
       <div class="meta">{{ post.date | date: "%b %d, %Y" }}</div>
