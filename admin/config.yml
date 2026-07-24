@@ -25,6 +25,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn this off to keep an unfinished episode hidden." }
+      - { label: "Series / Game", name: "series", widget: "select", default: "Arachne", options: ["Arachne", "Netwatch", "Raise the Black", "Arachne Specials"], hint: "Controls which series and game filter includes this episode." }
       - { label: "Short Description", name: "excerpt", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", required: false, hint: "Add topics such as Infinity, painting, or interviews." }
       - { label: "Spotify Episode Link", name: "spotify_url", widget: "string", required: false }
@@ -51,6 +52,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Turn this off to keep an unfinished video post hidden." }
+      - { label: "Series / Game", name: "series", widget: "select", default: "Arachne", options: ["Arachne", "Netwatch", "Raise the Black", "Arachne Specials"], hint: "Controls which series and game filter includes this video." }
       - { label: "Short Description", name: "excerpt", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", required: false }
       - { label: "YouTube Video ID", name: "youtube_id", widget: "string", required: false, hint: "Paste only the ID after v= in the YouTube URL." }
