@@ -12,6 +12,10 @@ plugins:
 markdown: kramdown
 permalink: /posts/:title/
 
+collections:
+  sponsors:
+    output: false
+
 # Authoring examples are source-only and should never become public pages.
 exclude:
   - README.md

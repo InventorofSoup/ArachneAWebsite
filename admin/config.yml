@@ -10,6 +10,28 @@ media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
 collections:
+  - name: "sponsors"
+    label: "Sponsors"
+    label_singular: "Sponsor"
+    description: "Add, update, reorder, or deactivate sponsors and affiliate offers."
+    folder: "_sponsors"
+    create: true
+    identifier_field: "name"
+    slug: "{{slug}}"
+    summary: "{{name}} — {{level}}"
+    fields:
+      - { label: "Sponsor Name", name: "name", widget: "string" }
+      - { label: "Active", name: "active", widget: "boolean", default: true, hint: "Turn this off to remove a sponsor from the public page without deleting its information." }
+      - { label: "Display Order", name: "sort_order", widget: "number", value_type: "int", default: 100, min: 1, hint: "Lower numbers appear first." }
+      - { label: "Relationship", name: "level", widget: "select", default: "Sponsor", options: ["Sponsor", "Affiliate", "Community Partner"] }
+      - { label: "Short Description", name: "summary", widget: "text", required: false }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - { label: "Main Website", name: "website_url", widget: "string", required: false }
+      - { label: "Affiliate Link", name: "affiliate_url", widget: "string", required: false, hint: "Use the unique tracking link supplied by the sponsor. Leave blank if there is none." }
+      - { label: "Affiliate or Discount Code", name: "affiliate_code", widget: "string", required: false, hint: "Use the exact code supplied by the sponsor." }
+      - { label: "Code Label", name: "code_label", widget: "string", required: false, default: "Affiliate code" }
+      - { label: "Disclosure", name: "disclosure", widget: "text", required: false, default: "Arachne may receive a commission or other support when you use this link or code, at no additional cost to you." }
+
   - name: "episodes"
     label: "Podcast Episodes"
     label_singular: "Podcast Episode"
