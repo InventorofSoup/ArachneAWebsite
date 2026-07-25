@@ -64,3 +64,13 @@ python scripts/import_youtube.py
 ```
 
 The video importer only overwrites pages marked with `youtube_imported: true`.
+
+## Sponsors
+
+Editors can manage the public Sponsors page through `/admin/` without editing
+source files. Sponsor entries support logos, links, affiliate codes, display
+order, relationship type, and disclosure text.
+
+Turn a sponsor's **Active** switch off to remove it from the public page while
+preserving the record for a future rotation. Only publish affiliate links and
+codes supplied by the sponsor.
