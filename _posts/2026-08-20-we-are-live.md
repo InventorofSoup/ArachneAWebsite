@@ -1,15 +1,19 @@
 ---
 layout: post
-title: "We Are Live! Welcome to the Center of the Arachne-Sphere"
+title: "We Are Live! Welcome to the Arachne-Sphere"
 date: 2026-08-20 09:00:00 -0400
-published: false
+published: true
 content_type: announcement
-excerpt: "The new home of Arachne is live, bringing our podcasts, videos, events, and community links together in one place."
+excerpt: "We finally did it! Arachne has a website where you can find our podcasts, videos, events, and community links all in one place."
 tags: [news, community, website]
 ---
-We are live! Welcome to the center of the Arachne-sphere.
+We finally did it! Arachne has a website where you can look through everything we have to offer, all in one place.
 
-We built this website to make it easier for everyone to find all of our content in one place. Whether you are here for an episode of the podcast, one of our gaming videos, an upcoming event, or simply to see what the Arachne community has been up to, you can now start right here.
+Until now, our content has lived in a bunch of different places. This website is our attempt to drag everything into one spot and make it much easier to find.
+
+No more Googling "Arachne podcast" just to find our RSS feed or Spotify link. No more trying to get our YouTube channel to show up without being buried under random spider videos. Now you'll just be Googling Arachne to find this website.
+
+So, welcome to the Arachne-sphere. This is just the start. I made that name up for this post, but I like the sound of it.
 
 ## Everything in one place
 
