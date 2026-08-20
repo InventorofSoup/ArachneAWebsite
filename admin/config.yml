@@ -2,9 +2,9 @@ backend:
   name: git-gateway
   branch: main
 
-site_url: "https://arachneawebsite.netlify.app/"
-display_url: "https://arachneawebsite.netlify.app/"
-logo_url: "https://arachneawebsite.netlify.app/assets/icons/Favicon.png"
+site_url: "https://arachneapodcast.com/"
+display_url: "https://arachneapodcast.com/"
+logo_url: "https://arachneapodcast.com/assets/icons/Favicon.png"
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"

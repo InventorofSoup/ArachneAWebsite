@@ -40,7 +40,7 @@ To activate editor login:
 4. Configure Identity invitation and recovery links to return users to the public `/admin/` page.
 5. Invite each editor by email from the Netlify Identity dashboard.
 
-Editors can then sign in at `https://arachneawebsite.netlify.app/admin/`. Their published changes are written to the repository and trigger a new Netlify deployment.
+Editors can then sign in at `https://arachneapodcast.com/admin/`. Their published changes are written to the repository and trigger a new Netlify deployment.
 
 Git Gateway is deprecated by Netlify. It remains suitable for this small invite-only
 site for now, but the editing workflow should be reevaluated if Netlify announces
