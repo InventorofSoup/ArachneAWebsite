@@ -2,6 +2,7 @@
 layout: default
 title: Privacy Policy
 permalink: /privacy/
+ads: false
 ---
 
 <header class="header page-hero">

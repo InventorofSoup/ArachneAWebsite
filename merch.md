@@ -4,6 +4,7 @@ title: Merch
 permalink: /merch/
 robots: noindex,follow
 sitemap: false
+ads: false
 ---
 
 <header class="header page-hero">

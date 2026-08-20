@@ -3,9 +3,8 @@ description: "A Gaming Podcast — episodes, events, videos, and community updat
 url: "https://arachneapodcast.com"
 baseurl: ""
 
-# Monetization is intentionally disabled until real account values are added.
-# Example AdSense value: ca-pub-1234567890123456
-adsense_client: ""
+# Google AdSense publisher account used for site verification and Auto ads.
+adsense_client: "ca-pub-6258536613860318"
 
 # Add the full Ko-fi (or other payment provider) URL when the page is ready.
 support_url: "https://ko-fi.com/arachneapodcast"

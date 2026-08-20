@@ -67,11 +67,11 @@ The video importer only overwrites pages marked with `youtube_imported: true`.
 
 ## Monetization setup
 
-The site keeps advertising disabled until a real AdSense publisher ID is added.
+The site uses the AdSense publisher ID in `_config.yml` for site verification and Auto ads. The matching seller declaration is published at the root `ads.txt` path.
 
-1. Set `adsense_client` in `_config.yml` to the full `ca-pub-...` value supplied by AdSense.
-2. Copy `templates/ads.txt` to the repository root as `ads.txt` and replace `pub-PUB-ID` with the matching `pub-...` value.
-3. Configure the required consent message in AdSense under **Privacy & messaging** before serving personalized ads.
+1. Keep the `adsense_client` and root `ads.txt` publisher IDs synchronized.
+2. Set `ads: false` in page front matter when ads should not load on a utility, legal, support, or low-content page.
+3. Configure and maintain the required consent message in AdSense under **Privacy & messaging** before serving personalized ads.
 4. Set `support_url` in `_config.yml` to the full Ko-fi or other secure contribution-page URL.
 
 The support button remains useful before a payment URL is configured: it opens the local Support page and points visitors to free ways to help.

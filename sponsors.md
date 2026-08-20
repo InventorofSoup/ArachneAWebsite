@@ -5,6 +5,7 @@ permalink: /sponsors/
 extra_css: /assets/css/sponsors.css
 robots: noindex,follow
 sitemap: false
+ads: false
 ---
 
 <header class="header page-hero">

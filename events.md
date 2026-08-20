@@ -2,6 +2,7 @@
 layout: default
 title: Events
 permalink: /events/
+ads: false
 ---
 
 <header class="header page-hero">

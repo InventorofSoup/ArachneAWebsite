@@ -2,6 +2,7 @@
 layout: default
 title: Tags
 permalink: /tags/
+ads: false
 ---
 
 <header class="header page-hero">

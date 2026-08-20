@@ -31,7 +31,7 @@
   {% if page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}{{ page.extra_css }}">{% endif %}
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/icons/Favicon.png">
   <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/icons/Favicon.png">
-  {% if site.adsense_client and site.adsense_client != "" %}
+  {% if site.adsense_client and site.adsense_client != "" and page.ads != false %}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client | escape }}" crossorigin="anonymous"></script>
   {% endif %}
   <script>

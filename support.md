@@ -2,6 +2,7 @@
 layout: default
 title: Support Arachne
 permalink: /support/
+ads: false
 ---
 
 <header class="header page-hero">
