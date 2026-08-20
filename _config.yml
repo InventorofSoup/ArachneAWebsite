@@ -3,6 +3,13 @@ description: "A Gaming Podcast — episodes, events, videos, and community updat
 url: "https://arachneawebsite.netlify.app"
 baseurl: ""
 
+# Monetization is intentionally disabled until real account values are added.
+# Example AdSense value: ca-pub-1234567890123456
+adsense_client: ""
+
+# Add the full Ko-fi (or other payment provider) URL when the page is ready.
+support_url: "https://ko-fi.com/arachneapodcast"
+
 # IMPORTANT: remove theme so we use our own layouts
 plugins:
   - jekyll-feed

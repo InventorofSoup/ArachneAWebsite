@@ -174,6 +174,7 @@ a{color:inherit}
 .site-footer{
   display:flex;
   justify-content:space-between;
+  align-items:flex-start;
   gap:14px;
   flex-wrap:wrap;
   padding:20px 0 32px;
@@ -183,6 +184,32 @@ a{color:inherit}
   font-size:11px;
   letter-spacing:.12em;
 }
+.footer-identity,.footer-actions{
+  display:flex;
+  align-items:flex-start;
+  flex-direction:column;
+  gap:10px;
+}
+.footer-actions{align-items:flex-end}
+.support-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:10px 14px;
+  color:var(--bg);
+  border:1px solid var(--cyan);
+  background:var(--cyan);
+  border-radius:8px;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-decoration:none;
+  text-transform:none;
+}
+.support-button:hover{color:var(--cyan);background:transparent}
+.footer-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.footer-links a{color:var(--muted);text-decoration:none}
+.footer-links a:hover{color:var(--cyan)}
 
 h1,h2,h3{
   font-family:var(--display);
@@ -786,6 +813,8 @@ h1{
   .signal-cta,.comments-section,.panel{padding:20px}
   .post-content{padding:20px 16px;border-inline:0}
   .site-footer{flex-direction:column}
+  .footer-actions{align-items:flex-start}
+  .footer-links{justify-content:flex-start}
 }
 
 @media (prefers-reduced-motion:reduce){

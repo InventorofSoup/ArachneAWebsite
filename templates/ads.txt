@@ -1,0 +1,3 @@
+# Replace PUB-ID with the publisher ID shown in the AdSense account, then copy
+# this file to /ads.txt at the repository root before enabling advertising.
+google.com, pub-PUB-ID, DIRECT, f08c47fec0942fa0

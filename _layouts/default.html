@@ -30,6 +30,9 @@
   {% if page.extra_css %}<link rel="stylesheet" href="{{ site.baseurl }}{{ page.extra_css }}">{% endif %}
   <link rel="icon" type="image/png" href="{{ site.baseurl }}/assets/icons/Favicon.png">
   <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/icons/Favicon.png">
+  {% if site.adsense_client and site.adsense_client != "" %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client | escape }}" crossorigin="anonymous"></script>
+  {% endif %}
   <script>
     (function () {
       var authHash = window.location.hash || "";
@@ -53,8 +56,22 @@
     </main>
 
     <footer class="site-footer">
-      <span>ARACHNE · EST. 2023</span>
-      <span>GAMES · STORIES · COMMUNITY</span>
+      <div class="footer-identity">
+        <span>ARACHNE · EST. 2023</span>
+        <span>GAMES · STORIES · COMMUNITY</span>
+      </div>
+      <div class="footer-actions">
+        {% if site.support_url and site.support_url != "" %}
+          <a class="support-button" href="{{ site.support_url }}" target="_blank" rel="noopener noreferrer">Help keep the Website Running</a>
+        {% else %}
+          <a class="support-button" href="{{ '/support/' | relative_url }}">Help keep the Website Running</a>
+        {% endif %}
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="{{ '/about/' | relative_url }}">About</a>
+          <a href="{{ '/privacy/' | relative_url }}">Privacy</a>
+          <a href="{{ '/contact/' | relative_url }}">Contact</a>
+        </nav>
+      </div>
     </footer>
   </div>
 

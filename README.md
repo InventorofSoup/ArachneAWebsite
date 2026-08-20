@@ -65,6 +65,17 @@ python scripts/import_youtube.py
 
 The video importer only overwrites pages marked with `youtube_imported: true`.
 
+## Monetization setup
+
+The site keeps advertising disabled until a real AdSense publisher ID is added.
+
+1. Set `adsense_client` in `_config.yml` to the full `ca-pub-...` value supplied by AdSense.
+2. Copy `templates/ads.txt` to the repository root as `ads.txt` and replace `pub-PUB-ID` with the matching `pub-...` value.
+3. Configure the required consent message in AdSense under **Privacy & messaging** before serving personalized ads.
+4. Set `support_url` in `_config.yml` to the full Ko-fi or other secure contribution-page URL.
+
+The support button remains useful before a payment URL is configured: it opens the local Support page and points visitors to free ways to help.
+
 ## Sponsors
 
 Editors can manage the public Sponsors page through `/admin/` without editing
