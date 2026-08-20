@@ -88,7 +88,7 @@ layout: default
   {% endif %}
 
   <section class="post-content">
-    <p class="signal-label">Show notes</p>
+    <p class="signal-label">{% if page.content_type == "episode" or page.content_type == "youtube" %}Show notes{% elsif page.content_type == "event" %}Event notes{% else %}From Arachne{% endif %}</p>
     {{ content }}
   </section>
 </article>
