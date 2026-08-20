@@ -3,6 +3,8 @@ layout: default
 title: Sponsors
 permalink: /sponsors/
 extra_css: /assets/css/sponsors.css
+robots: noindex,follow
+sitemap: false
 ---
 
 <header class="header page-hero">

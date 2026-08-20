@@ -10,11 +10,15 @@ adsense_client: ""
 # Add the full Ko-fi (or other payment provider) URL when the page is ready.
 support_url: "https://ko-fi.com/arachneapodcast"
 
+# Permanent community invite used on the Contact page.
+discord_url: "https://discord.gg/UAMNqPCJM"
+
 # IMPORTANT: remove theme so we use our own layouts
 plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 markdown: kramdown
 permalink: /posts/:title/

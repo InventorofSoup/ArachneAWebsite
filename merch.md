@@ -2,6 +2,8 @@
 layout: default
 title: Merch
 permalink: /merch/
+robots: noindex,follow
+sitemap: false
 ---
 
 <header class="header page-hero">
