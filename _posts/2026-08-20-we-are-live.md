@@ -2,7 +2,7 @@
 layout: post
 title: "We Are Live! Welcome to the Center of the Arachne-Sphere"
 date: 2026-08-20 09:00:00 -0400
-published: true
+published: false
 content_type: announcement
 excerpt: "The new home of Arachne is live, bringing our podcasts, videos, events, and community links together in one place."
 tags: [news, community, website]
